@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!--suppress ALL -->
+<mapper namespace="com.czg.business.log.mapper.VisitLogMapper">
+
+    <insert id="insert" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        insert into visit_log_${yearMonth} (
+            request_method,
+            request_uri,
+            body,
+            header,
+            request_param,
+            response,
+            create_time,
+            return_time)
+        values (
+            #{requestMethod,jdbcType=VARCHAR},
+            #{requestUri,jdbcType=VARCHAR},
+            #{body,jdbcType=VARCHAR},
+            #{header,jdbcType=VARCHAR},
+            #{requestParam,jdbcType=VARCHAR},
+            #{response,jdbcType=VARCHAR},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{returnTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+</mapper>
